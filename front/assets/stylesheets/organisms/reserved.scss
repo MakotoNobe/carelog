@@ -1,0 +1,27 @@
+.reserved{
+
+  &__container{
+    padding-top: 80px;
+    margin: 0 auto;
+  }
+}
+
+.v-card__subtitle{
+  padding: 10px 0px 5px 3px !important;
+}
+
+.v-card__text{
+  padding: 5px 0px 10px 15px !important;
+}
+
+.subbtn{
+  width: 100%;
+  padding: 8px 16px;
+  margin: 16px 0;
+  background-color: $primary;
+  border: none;
+  color: $white !important;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+}

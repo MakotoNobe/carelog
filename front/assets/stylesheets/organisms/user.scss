@@ -1,0 +1,22 @@
+.user-wrap {
+  width: 100%;
+  background: #fff;
+  &__head {
+    position: relative;
+  }
+  &__heading {
+    font-size: 24px;
+  }
+  &__link {
+    font-size: 14px;
+    &--right {
+      position: absolute;
+      top: 1rem;
+      right: 4rem;
+    }
+  }
+  a {
+    color: $primary !important;
+    text-decoration: none;
+  }
+}

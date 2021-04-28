@@ -1,0 +1,17 @@
+.star {
+  margin-left: 20px;
+  border: 3px solid;
+  border-color: orange ;
+  border-radius: 50%;
+  // background: red;
+  width: 30px;
+  height: 30px;
+  .span {
+    align-content: center;
+  }
+}
+
+.v-rating .v-icon {
+  padding: initial;
+  vertical-align: initial;
+}

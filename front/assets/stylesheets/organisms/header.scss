@@ -1,0 +1,17 @@
+.v-toolbar__title {
+  overflow: visible !important;
+  margin-right: 50px !important;
+}
+
+.v-app-bar__nav-icon {
+  @include display_sp {
+    display: none !important;
+  }
+}
+
+.v-item-group.v-slide-group {
+  display: none;
+  @include display_sp {
+    display: block !important;
+  }
+}

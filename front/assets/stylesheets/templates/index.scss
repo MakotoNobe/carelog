@@ -1,0 +1,20 @@
+body {
+  ul {
+    padding: 0;
+    margin: 0;
+    li {
+      list-style-type: none;
+    }
+  }
+}
+.body-wrap {
+  width: 100%;
+  height: 100%;
+  background: $lightgray;
+}
+.body-main {
+  width: 100%;
+  height: calc(100% - 112px);
+  margin-top: 60px;
+  padding-top: 40px;
+}

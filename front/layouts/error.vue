@@ -1,40 +1,38 @@
-<template>
-  <v-app dark>
-    <h1 v-if="error.statusCode === 404">
-      {{ pageNotFound }}
-    </h1>
-    <h1 v-else>
-      {{ otherError }}
-    </h1>
-    <NuxtLink to="/">
-      Home page
-    </NuxtLink>
-  </v-app>
+<template lang="pug">
+c-layout(center)
+  v-card.mx-auto(width="520", flat, color="transparent")
+    v-row.text-center(align="center", justify="center")
+      v-col(cols="12")
+        v-icon(size="80", color="gray") mdi-emoticon-sad-outline
+      v-col.py-0(cols="12")
+        .text-subtitle-1(v-if="error.statusCode === 404") {{ pageNotFound }}
+        .text-subtitle-1(v-else) {{ otherError }}
+      v-col(cols="12")
+        v-btn.mt-6(large, color="primary", to="/", depressed) ホームページ
 </template>
 
 <script>
 export default {
-  layout: 'empty',
   props: {
     error: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
-  data () {
+  data() {
     return {
-      pageNotFound: '404 Not Found',
-      otherError: 'An error occurred'
-    }
+      pageNotFound: "404ページが見つかりません",
+      otherError: "エラーが発生しました",
+    };
   },
-  head () {
+  head() {
     const title =
-      this.error.statusCode === 404 ? this.pageNotFound : this.otherError
+      this.error.statusCode === 404 ? this.pageNotFound : this.otherError;
     return {
-      title
-    }
-  }
-}
+      title,
+    };
+  },
+};
 </script>
 
 <style scoped>

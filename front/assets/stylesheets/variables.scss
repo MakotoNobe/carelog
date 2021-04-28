@@ -1,0 +1,41 @@
+/* colors */
+$primary: #f06364;
+$secondary: #3b4043;
+$success: #4CAF50;
+$darkgray: #707F89;
+$midgray: #98a6b5;
+$lightgray: #f0f3f5;
+$bluegray: #cdd6dd;
+$white: #fff;
+$dark-gray: #2E3331;
+$gray: #6D7570;
+
+/* メディアクエリブレークポイント */
+$xs: 600;
+$sm: 960;
+$md: 1264;
+$lg: 1904;
+ 
+$sp-min: $xs + px;
+$pc-min: $sm + px;
+ 
+/* PC */
+@mixin display_pc {
+  @media (min-width: $pc-min) {
+    @content;
+  }
+}
+ 
+/* タブレット */
+@mixin display_tab {
+  @media (min-width: $tb-min) and (max-width: $tb-max) {
+    @content;
+  }
+}
+ 
+/* スマホ */
+@mixin display_sp {
+  @media (min-width: $sp-min) {
+    @content;
+  }
+}

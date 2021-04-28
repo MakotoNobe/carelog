@@ -1,0 +1,138 @@
+.key-visual {
+  background: $white;
+  margin-bottom: 40px;
+  .top-content {
+    text-align: center;
+    color: $darkgray;
+    &__heading {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    &__text {
+      font-size: 12px;
+    }
+  }
+  .top-form {
+    position: relative;
+    max-width: 720px;
+    width: 60%;
+    height: 48px;
+    margin: 0 auto;
+    border-radius: 50px;
+    border: 1px solid $bluegray;
+    &__search-box {
+      width: 90%;
+      height: 45px;
+      padding: 0 24px;
+      &::placeholder {
+        color: $bluegray;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    &__icon {
+      position: absolute;
+      top: 50%;
+      right: 1em;
+      transform: translateY(-50%);
+      color: $midgray;
+      cursor: pointer;
+      cursor: hand;
+    }
+  }
+}
+.area-search {
+  &__heading {
+    font-size: 18px;
+    color: $secondary;
+    margin-bottom: 24px;
+  }
+  &__card {
+    background: $white;
+    height: 324px;
+  }
+  &__current-search-btn {
+    width: 100%;
+    height: 48px;
+    border: 1px solid $primary;
+    border-radius: 4px;
+    font-size: 14px;
+    color: $primary;
+    & > span {
+      padding-left: 8px;
+    }
+  }
+  &__area-btns {
+    height: calc(100% - 64px);
+    margin: 12px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    column-gap: 8px;
+    row-gap: 8px;
+  }
+  &__area-btn {
+    border: 1px solid $bluegray;
+    font-weight: bold;
+    font-size: 14px;
+    color: $darkgray;
+  }
+  &__prefectures {
+    height: 100%;
+    padding: 16px !important;
+    overflow: scroll;
+  }
+  &__prefecture {
+    padding-bottom: 8px;
+    padding-left: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid $lightgray;
+    font-size: 14px;
+    color: $secondary;
+    cursor: pointer;
+  }
+  &__cities {
+    height: calc(100% - 48px);
+    padding: 16px !important;
+    margin-bottom: 8px;
+    overflow: scroll;
+  }
+  &__city {
+    padding-bottom: 8px;
+    padding-left: 8px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid $lightgray;
+    font-size: 14px;
+    color: $secondary;
+    cursor: pointer;
+    input[type="checkbox"] {
+      vertical-align: middle;
+    }
+    & > label > span {
+      vertical-align: middle;
+      padding-left: 8px;
+    }
+  }
+  &__city-btns {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__city-clear-btn {
+    width: 80px;
+    height: auto;
+    border: 1px solid $bluegray;
+    border-radius: 4px;
+    color: $primary;
+  }
+  &__city-search-btn {
+    width: 160px;
+    height: auto;
+    background: $primary;
+    border: 1px solid $primary;
+    border-radius: 4px;
+    color: $white;
+  }
+}

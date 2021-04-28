@@ -1,0 +1,12 @@
+.office {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  list-style-type: none;
+  &__card {
+    width: 355px;
+    height: 418px;
+    margin: 16px 0;
+    background: #fff;
+  }
+}
