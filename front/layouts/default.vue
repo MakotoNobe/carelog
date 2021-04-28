@@ -80,11 +80,11 @@ export default {
       this.items = initialMenu.items;
       if (target === "user")
         try {
-          await this.$axios.delete("/api/signout");
+          await this.$axios.delete("/api/v1/signout");
         } catch (error) {}
       if (target === "admin")
         try {
-          await this.$axios.delete("/api/admin/signout");
+          await this.$axios.delete("/api/v1/admin/signout");
         } catch (error) {}
       this.isStaffAuth = false;
       this.drawer = false;

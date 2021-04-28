@@ -80,7 +80,7 @@ c-layout(center)
 <script>
 export default {
   async asyncData(context) {
-    const res = await context.$axios.$get("/api/staffs");
+    const res = await context.$axios.$get("/api/v1/staffs");
     const targetStaff = await res.find(
       (staff) => staff.id === context.params.id
     );

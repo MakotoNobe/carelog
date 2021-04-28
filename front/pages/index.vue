@@ -245,9 +245,9 @@ export default {
   created() {
     this.getFirstData();
   },
-  mounted() {
-    this.$scrollToTop();
-  },
+  // mounted() {
+  //   this.$scrollToTop();
+  // },
   methods: {
     // 初期読み込み時に東京の地区町村をデフォルトで表示させるメソッド
     async getFirstData() {

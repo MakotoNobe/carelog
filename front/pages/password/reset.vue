@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     async submitResetPassword() {
-      const url = "/api/password";
+      const url = "/api/v1/password";
       await this.$axios
         .$put(url, this.user, { headers: this.headers })
         .then((res) => {

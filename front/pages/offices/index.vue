@@ -179,7 +179,7 @@ export default {
     // 初期表示用のデータを入れるためのメソッド
     async getFirstData() {
       this.inputKeyword = this.$route.query.keyword;
-      const url = "/api/cities";
+      const url = "/api/v1/cities";
       const { areas } = await this.$axios.$get(url);
       this.areas = areas;
       //
@@ -344,7 +344,7 @@ export default {
     // ブックマーク
     async addBookmark(id) {
       if (confirm("ブックマークに追加しますか？")) {
-        await this.$axios.post("/api/users/bookmarks", {
+        await this.$axios.post("/api/v1/users/bookmarks", {
           office_id: id,
         });
       }

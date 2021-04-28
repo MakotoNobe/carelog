@@ -89,7 +89,7 @@ export default {
     };
   },
   async mounted() {
-    const res = await this.$axios.get("/api/users/thanks");
+    const res = await this.$axios.get("/api/v1/users/thanks");
     this.thanks = res.data;
   },
   methods: {

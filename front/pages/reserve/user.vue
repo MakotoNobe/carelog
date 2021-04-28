@@ -69,7 +69,7 @@ export default {
 
   methods: {
     async getReserved() {
-      const url = "/api/reserved/user";
+      const url = "/api/v1/reserved/user";
       await this.$axios
         .get(url)
         .then((response) => {

@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     async sentMail() {
-      const url = "/api/password";
+      const url = "/api/v1/password";
       await this.$axios
         .$post(url, {
           email: this.user.email,

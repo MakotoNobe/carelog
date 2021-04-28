@@ -113,7 +113,7 @@ export default {
     //   this.$emit("toggleBookmark", val)
     // }
     // async toggleBookmark(id) {
-    //   const res = await this.$axios.post("/api/users/bookmarks", {
+    //   const res = await this.$axios.post("/api/v1/users/bookmarks", {
     //     office_id: id,
     //   });
     //   console.log(res);

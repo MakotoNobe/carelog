@@ -98,7 +98,7 @@ export default {
     };
   },
   async mounted() {
-    const res = await this.$axios.get("/api/patients");
+    const res = await this.$axios.get("/api/v1/patients");
     this.patients = res.data;
   },
   methods: {

@@ -58,7 +58,7 @@ export default {
     };
   },
   async created() {
-    const url = "/api/users";
+    const url = "/api/v1/users";
     const headers = {
       uid: Cookies.get("uid"),
       client: Cookies.get("client"),

@@ -79,7 +79,7 @@ export default {
     };
   },
   async mounted() {
-    const res = await this.$axios.get("/api/staffs");
+    const res = await this.$axios.get("/api/v1/staffs");
     // console.log(res.data[0].staff.office.office_images[0].image);
     this.staffs = res.data;
   },

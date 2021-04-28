@@ -254,7 +254,7 @@ export default {
   },
   methods: {
     async submitSignUp() {
-      const url = "/api/offices/signup";
+      const url = "/api/v1/offices/signup";
       await this.$axios
         // ---ここ確認お願いします---
         .$post(url, {

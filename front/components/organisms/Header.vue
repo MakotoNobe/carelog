@@ -70,7 +70,7 @@ export default {
   methods: {
     async logout(target) {
       if (target === "user") {
-        const url = "/api/signout";
+        const url = "/api/v1/signout";
         await this.$axios
           .delete(url, {
             headers: this.headers,

@@ -154,7 +154,7 @@ export default {
   },
   methods: {
     async submitUpdateUser() {
-      const url = "/api/users/edit";
+      const url = "/api/v1/users/edit";
       const headers = {
         uid: Cookies.get("uid"),
         client: Cookies.get("client"),

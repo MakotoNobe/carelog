@@ -76,7 +76,7 @@ export default {
   methods: {
     async getReserved() {
       this.loading = true;
-      const url = "/api/reserved/office";
+      const url = "/api/v1/reserved/office";
       await this.$axios
         .get(url, {
           email: Cookies.get("uid"),

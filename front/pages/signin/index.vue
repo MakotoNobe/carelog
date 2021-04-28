@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     async submitSignIn() {
-      const url = "/api/signin";
+      const url = "/api/v1/signin";
       await this.$axios
         .post(url, {
           email: this.user.email,

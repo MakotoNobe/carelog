@@ -176,7 +176,7 @@ export default {
   },
   methods: {
     async submitSignUp() {
-      const url = "/api/signup";
+      const url = "/api/v1/signup";
       await this.$axios
         .$post(url, {
           name: this.user.name,

@@ -45,7 +45,7 @@ export default {
   methods: {
     async getData() {
       this.loading = true;
-      const url = "/api/staffs/thanks";
+      const url = "/api/v1/staffs/thanks";
       await this.$axios
         .get(url, {
           email: Cookies.get("uid"),

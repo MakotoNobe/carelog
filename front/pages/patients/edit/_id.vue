@@ -155,11 +155,11 @@ c-layout(center)
 <script>
 export default {
   async asyncData(context) {
-    const resPatient = await context.$axios.$get("/api/patients");
+    const resPatient = await context.$axios.$get("/api/v1/patients");
     const targetPatient = await resPatient.find(
       (patient) => patient.id === context.params.id
     );
-    const resStaff = await context.$axios.$get("/api/staffs");
+    const resStaff = await context.$axios.$get("/api/v1/staffs");
     const targetStaffs = resStaff.map((staff) => staff.name);
     return {
       patient: targetPatient,

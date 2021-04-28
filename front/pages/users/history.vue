@@ -88,7 +88,7 @@ export default {
     },
     async addBookmark(id) {
       if (confirm("ブックマークに追加しますか？")) {
-        await this.$axios.post("/api/users/bookmarks", {
+        await this.$axios.post("/api/v1/users/bookmarks", {
           office_id: id,
         });
       }

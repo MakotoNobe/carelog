@@ -160,7 +160,7 @@ const ageRange = [...Array(maxAge - minAge + 1).keys()].map(
 
 export default {
   async asyncData(context) {
-    const res2 = await context.$axios.$get("/api/staffs");
+    const res2 = await context.$axios.$get("/api/v1/staffs");
     console.log(res2);
     const res3 = res2.map((staff) => staff.name);
     console.log(res3);

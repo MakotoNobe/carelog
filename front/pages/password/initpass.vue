@@ -94,7 +94,7 @@ export default {
   },
   methods: {
     // async submitResetPassword() {
-    //   const url = "/api/offices/confirmation";
+    //   const url = "/api/v1/offices/confirmation";
     //   await this.$axios
     //     .$put(url, this.user, { headers: this.headers })
     //     .then((res) => {
@@ -106,7 +106,7 @@ export default {
     //     });
     // },
     async submitResetPassword() {
-      const url = "/api/offices/confirmation";
+      const url = "/api/v1/offices/confirmation";
       await this.$axios
         .$put(url, {
           confirmation_token: this.user.token,

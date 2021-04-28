@@ -80,7 +80,7 @@ export default {
   },
   methods: {
     async submitReserve() {
-      const url = "/api/reserve";
+      const url = "/api/v1/reserve";
       await this.$axios
         .$post(url, {
           date: this.date,

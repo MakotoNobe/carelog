@@ -84,7 +84,7 @@ export default {
   methods: {
     async withdraw() {
       this.loading = true;
-      const url = "/api/user/withdraw";
+      const url = "/api/v1/user/withdraw";
       await this.$axios.delete(url);
       this.loading = false;
       this.$nuxt.$emit("logoutSet", "user");
