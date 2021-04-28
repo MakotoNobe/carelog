@@ -253,7 +253,7 @@ export default {
     async getFirstData() {
       this.filterLoading = false;
       this.selectedCities = [];
-      const url = "/api/cities";
+      const url = "/api/v1/cities";
       const { areas, prefectures, cities } = await this.$axios.$get(url);
       this.areas = areas;
       this.prefectures = prefectures;
