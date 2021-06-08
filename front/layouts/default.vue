@@ -1,23 +1,18 @@
-<template lang="pug">
-v-app
-  c-appbar(
-    :items="items",
-    @onChangeDrawer="drawer = !drawer",
-    @logout="logout",
-    :isStaff="isStaffAuth"
-  )
-  v-main.lightgray
-    c-main-scroll-viewer(:active="!isMobile")
-      nuxt
-      c-footer
-  c-drawer(v-model="drawer", :items="items", @logout="logout")
+<template>
+<div>
+  <div class=header style="color:blue">
+  <h2>ヘッダー</h2>
+  </div>
+  <div class=main style="color:red">
+  <h2>メイン</h2>
+  </div>
+  <div class=fooder style="color:green">
+  <h2>フッダー </h2>
+  </div>
+</div>
 </template>
-<script>
-import CAppbar from "@/components/c-appbar";
-import CDrawer from "@/components/c-drawer";
-import CFooter from "@/components/c-footer";
-import CMainScrollViewer from "@/components/c-main-scroll-viewer.vue";
 
+<script>
 //
 import Cookies from "js-cookie";
 import initialMenu from "@/utils/headerMenu/initial.js";
@@ -25,19 +20,6 @@ import loggedInUserMenu from "@/utils/headerMenu/loggedInUser.js";
 import loggedInStaffMenu from "@/utils/headerMenu/loggedInStaff.js";
 import loggedInAdminMenu from "@/utils/headerMenu/loggedInAdmin.js";
 export default {
-  components: {
-    CAppbar,
-    CFooter,
-    CDrawer,
-    CMainScrollViewer,
-  },
-  data() {
-    return {
-      drawer: false,
-      items: initialMenu.items,
-      isStaffAuth: false,
-    };
-  },
   watch: {
     "$route.fullPath"() {
       this.loadMenu();
