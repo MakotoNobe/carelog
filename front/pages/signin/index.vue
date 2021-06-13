@@ -74,9 +74,13 @@ c-layout(center)
 
 <script>
 import Cookies from "js-cookie";
+import Clayout from "@/components/c-layout.vue";
 
 export default {
-  components: {},
+  name: "signin",
+  components: {
+    Clayout,
+  },
   data() {
     return {
       user: {
