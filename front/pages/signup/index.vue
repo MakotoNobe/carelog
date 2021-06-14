@@ -155,6 +155,8 @@ c-layout(center)
 import { AsYouType } from "libphonenumber-js";
 
 export default {
+  name: "signup",
+  layout: 'default',
   data() {
     return {
       user: {
