@@ -147,13 +147,9 @@ text-decoration: none;
 }
 
 .footer {
-  cursor:pointer;
   bottom: 0;
   width: 100%;
   position: absolute;/* ←絶対位置 */
-  overflow: hidden;
-  clear: both;
-  float:left;
   margin-bottom: auto;
   background-color:#fff;
 }
@@ -170,6 +166,7 @@ text-decoration: none;
   display: inline-block;
   margin-bottom: 10px;
   font-color:black;
+  cursor:pointer;
 }
 
 #copy{
@@ -190,6 +187,7 @@ text-decoration: none;
     margin-left:10px;
     padding-right: 15px;
     justify-content: space-between;
+    cursor:pointer;
   }
 
 
