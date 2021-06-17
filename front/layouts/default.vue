@@ -11,15 +11,25 @@
           <button><nuxt-link to="/signup">新規登録</nuxt-link></button>
         </ul>
     </nav>
-  </div>  
+  </div>
   <div class=main style="color:red">
   <h2>メイン</h2>
   </div>
-  <div class=fooder style="color:green">
-  <h2>フッダー </h2>
-  </div>
-</div>
 
+  <div class="footer">
+    <div class="logo">
+      <a href="/" aria-current="page">
+        <b>ホームケアナビ</b>
+      </a>
+    </div>
+    <div class="logo" id="copy">©️hogehoge</div>
+      <ul class="nav">
+        <li><a href="/privacy_policy" >プライバシーポリシー</a></li>
+        <li><a href="/terms">利用規約</a></li>
+        <li><a href="/contact"> お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -120,7 +130,7 @@ display: flex;
 }
 .header ul button{
   border: 1px solid black;
-  margin-left:20px; 
+  margin-left:20px;
   padding: 4px 40px;
   text-align: center;
   border-radius: 2px;
@@ -129,11 +139,61 @@ display: flex;
   background:#FF9966;
 }
 .header ul button:nth-last-child(1) a{
- color:white;  
+color:white;
 }
 
 .header ul button a{
 text-decoration: none;
 }
 
+.footer {
+  bottom: 0;
+  width: 100%;
+  position: absolute;/* ←絶対位置 */
+  margin-bottom: auto;
+  background-color:#fff;
+}
+
+.logo{
+  display: inline-block;
+  float: left;
+  margin-left: auto;
+}
+
+.logo a {
+  text-decoration: none;
+  padding-left: 200px ;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-color:black;
+  cursor:pointer;
+}
+
+#copy{
+  font-size:10px;
+  padding-left:20px;
+  color:gray;
+  padding-top: 4px
+}
+
+.nav li a {
+  color:red;
+  text-decoration: none;
+}
+
+.nav li {
+    display: inline-block;
+    font-size:12px;
+    margin-left:10px;
+    padding-right: 15px;
+    justify-content: space-between;
+    cursor:pointer;
+  }
+
+
+.nav {
+  text-align: right;
+  padding-right: 145px;
+  margin-bottom: 10px;
+}
 </style>
