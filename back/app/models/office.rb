@@ -3,7 +3,7 @@ class Office < ApplicationRecord
 
   def self.keyword(keyword) #ここでのself.はOffice.を意味する
     if keyword
-      where(['name LIKE ? OR address LIKE ? OR company',
+      where(['name LIKE ? OR address LIKE ? OR company LIKE ?',
               "%#{keyword}%","%#{keyword}%",   "%#{keyword}%"])
                     #検索とoffice_name,address, business_entityの部分一致を表示。#Office.は省略
     else
