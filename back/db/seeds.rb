@@ -1959,21 +1959,21 @@ City.create!([
   {id: 1896, name: "八重山郡与那国町", city_number: "47382", prefecture_id: 47}
 ])
 
-require 'csv'
+# require 'csv'
 
-CSV.foreach('db/offices_dump.csv' headers: true) do |row|
-  Office.create!(
-    office_name: row['name'],
-    phone_number: row['tel'],
-    fax: row['fax'],
-    postal_code: row['postcode'],
-    address: row['address'],
-    closest_station: row['near_station'],
-    staff_count: row['staff_number'],
-    business_entity: row['company'],
-    site_url: row['url'],
-    feature_deatail: row['introduction'],
-    email: row['email'],
-    city_id: row['city_number']
-  )
-end
+# CSV.foreach('db/offices_dump.csv', headers: true) do |row|
+#   Office.create!(
+#     office_name: row['name'],
+#     phone_number: row['tel'],
+#     fax: row['fax'],
+#     postal_code: row['postcode'],
+#     address: row['address'],
+#     closest_station: row['near_station'],
+#     staff_count: row['staff_number'],
+#     business_entity: row['company'],
+#     site_url: row['url'],
+#     feature_deatail: row['introduction'],
+#     email: row['email'],
+#     city_id: row['city_number']
+#   )
+# end
