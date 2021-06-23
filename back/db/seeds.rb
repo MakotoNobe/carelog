@@ -1959,21 +1959,41 @@ City.create!([
   {id: 1896, name: "八重山郡与那国町", city_number: "47382", prefecture_id: 47}
 ])
 
-# require 'csv'
+require 'csv'
 
-# CSV.foreach('db/offices_dump.csv', headers: true) do |row|
-#   Office.create!(
-#     office_name: row['name'],
-#     phone_number: row['tel'],
-#     fax: row['fax'],
-#     postal_code: row['postcode'],
-#     address: row['address'],
-#     closest_station: row['near_station'],
-#     staff_count: row['staff_number'],
-#     business_entity: row['company'],
-#     site_url: row['url'],
-#     feature_deatail: row['introduction'],
-#     email: row['email'],
-#     city_id: row['city_number']
-#   )
-# end
+CSV.foreach('db/offices.csv', headers: true) do |row|
+  Office.create!(
+    id: row[`id`],
+    provider: row['provider'],
+    uid: row['uid'],
+    encrypted_password: row['encrypted_password'],
+    reset_password_token: row['reset_password_token'],
+    reset_password_sent_at: row['reset_password_sent_at'],
+    allow_password_change: row['allow_password_change'],
+    confirmation_token: row['confirmation_token'],
+    confirmed_at: row['confirmed_at'],
+    confirmation_sent_at: row['confirmation_sent_at'],
+    unconfirmed_email: row['unconfirmed_email'],
+    password: row['password'],
+    name: row['name'],
+    title: row['title'],
+    postcode: row['postcode'],
+    address: row['address'],
+    near_station: row['near_station'],
+    tel: row['tel'],
+    fax: row['fax'],
+    email: row['email'],
+    company: row['company'],
+    url: row['url'],
+    introduction: row['introduction'],
+    latitude: row['latitude'],
+    longitude: row['longitude'],
+    city_id: row['city_id'],
+    staff_number: row['staff_number'],
+    city_number: row['city_number'],
+    status: row['status'],
+    tokens: row['tokens'],
+    created_at: row['created_at'],
+    updated_at: row['updated_at']
+  )
+end
