@@ -354,6 +354,7 @@ City.create!([
   {id: 291, name: "宮城郡利府町", city_number: "04406", prefecture_id: 4},
   {id: 292, name: "黒川郡大和町", city_number: "04421", prefecture_id: 4},
   {id: 293, name: "黒川郡大郷町", city_number: "04422", prefecture_id: 4},
+  {id: 1897, name: "黒川郡富谷町", city_number: "04423", prefecture_id: 4},
   {id: 294, name: "黒川郡大衡村", city_number: "04424", prefecture_id: 4},
   {id: 295, name: "加美郡色麻町", city_number: "04444", prefecture_id: 4},
   {id: 296, name: "加美郡加美町", city_number: "04445", prefecture_id: 4},
