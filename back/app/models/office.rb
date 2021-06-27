@@ -3,9 +3,12 @@ class Office < ApplicationRecord
   belongs_to :city, foreign_key: :city_number, primary_key: :city_number
 
   def self.keyword(keyword) #ここでのself.はOffice.を意味する
-    where('name LIKE ? OR address LIKE ? OR company LIKE ?',
-            "%#{keyword}%","%#{keyword}%",   "%#{keyword}%")
-                  #検索とoffice_name,address, business_entityの部分一致を表示。#Office.は省略
+    keywords = keyword.split(/[[:blank:]]+/)
+    keywords.map do |keyword|
+      where('name LIKE ? OR address LIKE ? OR company LIKE ?',
+              "%#{keyword}%","%#{keyword}%",   "%#{keyword}%")
+                    #検索とoffice_name,address, business_entityの部分一致を表示。#Office.は省略
+    end
   end
 
   # scope :search, -> (search_params) do
@@ -27,7 +30,7 @@ class Office < ApplicationRecord
   end
 
   def self.cities(cities) #ここでのself.はOffice.を意味する
-    where("offices.city_number IN (#{cities})")
+      where("offices.city_number IN (#{city})")
   end
 
 end
