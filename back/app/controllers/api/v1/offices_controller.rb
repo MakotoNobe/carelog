@@ -3,11 +3,11 @@ class Api::V1::OfficesController < ApplicationController
     if params[:keyword]
       @offices = Office.page(params[:page]).per(30)
                 .keyword(params[:keyword])
-    elsif params[:area] && params[:prefecture] && cities_params
+    elsif params[:area] && params[:prefecture] && params[:cities]
       @offices = Office.page(params[:page]).per(30)
                 .area(params[:area])
                 .prefecture(params[:prefecture])
-                .cities(cities_params)
+                .cities(params[:cities])
     else
       @offices = Office.page(params[:page]).per(30)
     end
@@ -16,10 +16,4 @@ class Api::V1::OfficesController < ApplicationController
 
   def show
   end
-
-  private
-  def cities_params
-    params.require(:cities).permit(cities: [])
-  end
-
 end

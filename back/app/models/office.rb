@@ -17,9 +17,9 @@ class Office < ApplicationRecord
   #     .cities(search_params[:cities])
   # end
 
-  # scope :area,       -> (area)       { joins(city: :prefecture).where(['area_id LIKE ?',"%#{area}%"]) }
-  # scope :prefecture, -> (prefecture) { joins(:city).where(['prefecture_id LIKE ?',"%#{prefecture}%"]) }
-  # scope :cities,     -> (cities)     { where(['city_number LIKE ?',"%#{cities}%"]) }
+  # scope :area,       -> (area)       { joins(city: :prefecture).where("area_id = ?", "#{area}") }
+  # scope :prefecture, -> (prefecture) { joins(:city).where("prefecture_id = ?",  "#{prefecture}") }
+  # scope :cities,     -> (cities)     { where("offices.city_number IN (?)", cities) }
 
   def self.area(area) #ここでのself.はOffice.を意味する
     joins(city: :prefecture).where("area_id = ?", "#{area}")
@@ -30,7 +30,7 @@ class Office < ApplicationRecord
   end
 
   def self.cities(cities) #ここでのself.はOffice.を意味する
-      where("offices.city_number IN (#{city})")
+    where("offices.city_number IN (?)", cities)
   end
 
 end
