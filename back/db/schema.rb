@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_121449) do
+ActiveRecord::Schema.define(version: 2021_06_22_144556) do
 
   create_table "areas", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -28,24 +28,37 @@ ActiveRecord::Schema.define(version: 2021_05_17_121449) do
   end
 
   create_table "offices", charset: "utf8mb4", force: :cascade do |t|
-    t.string "office_name"
-    t.string "phone_number"
-    t.string "fax"
-    t.string "postal_code"
+    t.string "provider"
+    t.string "uid"
+    t.string "encrypted_password"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.boolean "allow_password_change"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.string "password"
+    t.string "name"
+    t.string "title"
+    t.string "postcode"
     t.string "address"
-    t.string "closest_station"
-    t.integer "staff_count"
-    t.string "business_entity"
-    t.string "site_url"
-    t.string "feature_title"
-    t.string "feature_deatail"
+    t.string "near_station"
+    t.string "tel"
+    t.string "fax"
     t.string "email"
-    t.string "password_digest"
-    t.string "remember_digest"
-    t.bigint "city_id"
+    t.string "company"
+    t.text "url"
+    t.text "introduction"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "city_id"
+    t.string "staff_number"
+    t.string "city_number"
+    t.boolean "status"
+    t.text "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["city_id"], name: "index_offices_on_city_id"
   end
 
   create_table "prefectures", charset: "utf8mb4", force: :cascade do |t|
@@ -56,6 +69,5 @@ ActiveRecord::Schema.define(version: 2021_05_17_121449) do
     t.index ["area_id"], name: "index_prefectures_on_area_id"
   end
 
-  add_foreign_key "offices", "cities"
   add_foreign_key "prefectures", "areas"
 end

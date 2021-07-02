@@ -354,6 +354,7 @@ City.create!([
   {id: 291, name: "宮城郡利府町", city_number: "04406", prefecture_id: 4},
   {id: 292, name: "黒川郡大和町", city_number: "04421", prefecture_id: 4},
   {id: 293, name: "黒川郡大郷町", city_number: "04422", prefecture_id: 4},
+  {id: 1897, name: "黒川郡富谷町", city_number: "04423", prefecture_id: 4},
   {id: 294, name: "黒川郡大衡村", city_number: "04424", prefecture_id: 4},
   {id: 295, name: "加美郡色麻町", city_number: "04444", prefecture_id: 4},
   {id: 296, name: "加美郡加美町", city_number: "04445", prefecture_id: 4},
@@ -1958,3 +1959,42 @@ City.create!([
   {id: 1895, name: "八重山郡竹富町", city_number: "47381", prefecture_id: 47},
   {id: 1896, name: "八重山郡与那国町", city_number: "47382", prefecture_id: 47}
 ])
+
+require 'csv'
+
+CSV.foreach('db/offices.csv', headers: true) do |row|
+  Office.create!(
+    id: row[`id`],
+    provider: row['provider'],
+    uid: row['uid'],
+    encrypted_password: row['encrypted_password'],
+    reset_password_token: row['reset_password_token'],
+    reset_password_sent_at: row['reset_password_sent_at'],
+    allow_password_change: row['allow_password_change'],
+    confirmation_token: row['confirmation_token'],
+    confirmed_at: row['confirmed_at'],
+    confirmation_sent_at: row['confirmation_sent_at'],
+    unconfirmed_email: row['unconfirmed_email'],
+    password: row['password'],
+    name: row['name'],
+    title: row['title'],
+    postcode: row['postcode'],
+    address: row['address'],
+    near_station: row['near_station'],
+    tel: row['tel'],
+    fax: row['fax'],
+    email: row['email'],
+    company: row['company'],
+    url: row['url'],
+    introduction: row['introduction'],
+    latitude: row['latitude'],
+    longitude: row['longitude'],
+    city_id: row['city_id'],
+    staff_number: row['staff_number'],
+    city_number: row['city_number'],
+    status: row['status'],
+    tokens: row['tokens'],
+    created_at: row['created_at'],
+    updated_at: row['updated_at']
+  )
+end
