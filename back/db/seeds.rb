@@ -1998,3 +1998,30 @@ CSV.foreach('db/offices.csv', headers: true) do |row|
     updated_at: row['updated_at']
   )
 end
+
+# require 'csv'
+
+# CSV.foreach('db/users.csv', headers: true) do |row|
+#   User.create!(
+#     id: row[`id`],
+#     provider: row['provider'],
+#     uid: row['uid'],
+#     encrypted_password: row['encrypted_password'],
+#     reset_password_token: row['reset_password_token'],
+#     reset_password_sent_at: row['reset_password_sent_at'],
+#     allow_password_change: row['allow_password_change'],
+#     remember_created_at: row['remember_created_at'],
+#     confirmation_token: row['confirmation_token'],
+#     confirmed_at: row['confirmed_at'],
+#     confirmation_sent_at: row['confirmation_sent_at'],
+#     unconfirmed_email: row['unconfirmed_email'],
+#     name: row['name'],
+#     email: row['email'],
+#     phone_number: row['phone_number'],
+#     post_code: row['post_code'],
+#     address: row['address'],
+#     tokens: row['tokens'],
+#     created_at: row['created_at'],
+#     updated_at: row['updated_at']
+#   )
+# end
