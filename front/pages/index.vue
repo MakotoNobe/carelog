@@ -1,5 +1,5 @@
 <template>
-  <div class=main style="color:red">
+  <div class=main>
   <h2>メイン</h2>
   <ul v-for="(area,index) in areas " :key="`area-${index}`" >
       <li> 最初のliの中</li>
@@ -10,10 +10,10 @@
       <li @click="citychange(prefecture.id)">{{ prefecture.name }}</li>
     </ul>
     <ul v-for="(city,index) in cities " :key="`city-${index}`" >
-      <li> cityの中</li>
+      <v-checkbox :id="city.city_number" :value="city.city_number" v-model="checkedcity"></v-checkbox>
       <li> {{ city.name }}</li>
     </ul>
-    <button><nuxt-link to="/offices" :cities="city" >検索</nuxt-link></button>
+    <button @click="selectedcity"><nuxt-link to="/offices">検索</nuxt-link></button>
     <h1>  api  </h1>
   </div>
 </template>
@@ -25,6 +25,7 @@ export default {
       areas:[],
       prefectures:[],
       cities:[],
+      checkedcity:[],
     }
   },
   created() {
@@ -63,6 +64,17 @@ export default {
           console.log('Do that');
       })      
       },
+    selectedcity(checkedcity){
+    const selected = this.checkedcity
+    console.log(selected)
+    this.$router.push({
+        name: 'offices-id',
+        path: "/offices/:id",
+        params: { id: `${selected}` }
+        // path: `/offices/:${selected}`,
+        // params: { id: checkedcity['[]`selected`'] }
+      })
+    },
     async fristareacity(){
           const citiesapi = await this.$axios.$get('/api/v1/3/3/cities')
           // '/api/v1//3←市区町村が変わる/cities'
