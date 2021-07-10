@@ -14,7 +14,6 @@
       <li> {{ city.name }}</li>
     </ul>
     <button @click="selectedcity"><nuxt-link to="/offices">検索</nuxt-link></button>
-    <h1>  api  </h1>
   </div>
 </template>
 <script>
@@ -33,7 +32,7 @@ export default {
     // ページが更新されたタイミングで関数を実行
 
   },
-  methods: {    
+  methods: {
       prechange(areid){
       const preapi = this.$axios.$get(`/api/v1/${areid}/3/cities`)
       console.log('preapiのコンソール'+preapi)
@@ -44,11 +43,11 @@ export default {
       this.areas = res.areas,
       this.prefectures = res.prefectures,
       this.cities = []
-      ) 
+      )
       })
       .catch(() => {
           console.log('Do that');
-      })      
+      })
       },
     citychange(preid){
       const citiesapi = this.$axios.$get(`/api/v1/${preid}/cities`)
@@ -58,11 +57,11 @@ export default {
         console.log(res);
        return(
       this.cities = res.cities
-      ) 
+      )
       })
       .catch(() => {
           console.log('Do that');
-      })      
+      })
       },
     selectedcity(checkedcity){
     const selected = this.checkedcity
@@ -82,8 +81,8 @@ export default {
           this.prefectures = citiesapi.prefectures
           this.cities = citiesapi.cities
         },
-    }, 
-    
+    },
+
     // loadMenu() {
     //   if (Cookies.get("access-token")) {
     //     if (Cookies.get("staff")) {
@@ -138,8 +137,8 @@ export default {
     //   Cookies.remove("office_name", { path: "/" });
     //   Cookies.remove("office_email", { path: "/" });
     // },
-    
-   
+
+
 };
 </script>
 <style>
