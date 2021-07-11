@@ -1,6 +1,7 @@
 class Office < ApplicationRecord
 
   belongs_to :city, foreign_key: :city_number, primary_key: :city_number
+  has_many :bookmarks, dependent: :destroy
 
   def self.keyword(keyword) #ここでのself.はOffice.を意味する
     keywords = keyword.split(/[[:blank:]]+/)

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get ':prefecture_id/cities', to:'cities#get'
       get ':area_id/:prefecture_id/cities', to:'cities#get'
       resources :offices
+      resources :bookmarks, only: [:create, :destroy, :index]
     end
   end
 end
