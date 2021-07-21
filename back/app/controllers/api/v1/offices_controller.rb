@@ -27,7 +27,6 @@ class Api::V1::OfficesController < ApplicationController
     @office = Office.find_by(id: params[:id])
     @office.destroy
     render json: {'office': @office}
-    # redirect_to :root
   end
-
+  
 end
