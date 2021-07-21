@@ -15,5 +15,19 @@ class Api::V1::OfficesController < ApplicationController
   end
 
   def show
+    @office = Office.find_by(id: params[:id])
+    render json: { 'office': @office }
   end
+
+  def edit
+    @office = Office.find_by(id: params[:id])
+  end
+
+  def destroy
+    @office = Office.find_by(id: params[:id])
+    @office.destroy
+    render json: {'office': @office}
+    # redirect_to :root
+  end
+
 end

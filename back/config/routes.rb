@@ -4,7 +4,8 @@ Rails.application.routes.draw do
       get 'cities', to:'cities#get'
       get ':prefecture_id/cities', to:'cities#get'
       get ':area_id/:prefecture_id/cities', to:'cities#get'
-      resources :offices
+      resources :offices, only:[:index,:show,:edit,:destroy]
     end
   end
 end
+
