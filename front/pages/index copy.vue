@@ -13,11 +13,8 @@
       <v-checkbox :id="city.city_number" :value="city.city_number" v-model="checkedcity"></v-checkbox>
       <li> {{ city.name }}</li>
     </ul>
-    <!-- <button> -->
-    <!-- <button @click="stringify"> -->
     <button @click="selectedcity">
       <!-- <nuxt-link to="/offices"> -->
-      <!-- <nuxt-link :to="{path: `/offices/${selectedcity}`}"> -->
       検索
       <!-- </nuxt-link> -->
       </button>
@@ -81,25 +78,65 @@ export default {
     const selected = this.checkedcity
     const areanumber = this.areanumber
     const prefecturenum = this.prefecturenum
-    console.log(citynum)
+    // for ( let i =0; i < selected.length; i++){
+      console.log(selected)
+
+      // if (selected.length >= i) {
+      // console.log("if分の中です"+selected)
       let citynum = selected.map(selected=>{
-        // let rObj  = "&"
         let rObj  = `cities[]=${selected}&`
-        return  rObj
+        return  new String (rObj)
     })
-    const cityn = JSON.stringify(citynum)
-    console.log(cityn)
-    //   // デコードする方法
-      // var result = decodeURIComponent('%E3%81%82%E3%81%84%E3%81%86%3F%26ABC');
+      //   console.log("if分の中です"+citynum)
+      //   }
+      //   console.log("returnの前"+citynum)
+      console.log("for分の中です"+citynum)
+      var qs = require('qs');
+      var parseStr = qs.parse(citynum);
+      console.log(parseStr);
+      var userObj = {
+        cities: {
+          email: 'taro@classmethod.jp'
+        }
+      }
+      var queryStr = qs.stringify(selected);
+      console.log(queryStr);
+      // return citynum
+    // }
+    // stringifyQuery((selected)=>{
+    //   return citynum = selected
+    // })
+    // console.log(citynum)
     this.$router.push({
           name: 'offices',
           path: "/offices/:area/:prefecture/:city",
           query: {
           area:`${areanumber}`,
           prefecture: `${prefecturenum}`,
-          city:`${cityn}`,
+          city:`${queryStr}`
         }
+    // this.$router.replace({
+    //       name: 'offices',
+    //       path: "/offices/:prefecture:cities",
+    //       params: {
+    //       prefecture:`${prefecturenum}`,
+    //       cities: `${citynum}`,
+    //     }
     })
+    // this.$router.push({
+    //     name: 'offices',
+    //     path: "/offices/:area:prefecture:cities",
+
+    //     // params: {
+    //     // "cities[]": `${selected}`,
+    //     // }
+    //     query: {
+    //     area: ,
+    //     prefecture: ,
+    //     "cities[]": `${selected}`,
+    //     }
+    //     // params: { id: `${selected}` }
+    //   })
     },
     async fristareacity(){
           const citiesapi = await this.$axios.$get('/api/v1/3/3/cities')
@@ -166,6 +203,8 @@ export default {
     //   Cookies.remove("office_name", { path: "/" });
     //   Cookies.remove("office_email", { path: "/" });
     // },
+
+
 };
 </script>
 <style>
