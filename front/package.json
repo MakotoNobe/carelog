@@ -21,12 +21,14 @@
     "cookie-parser": "^1.4.5",
     "js-cookie": "^2.2.1",
     "libphonenumber-js": "^1.9.6",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.6",
+    "vee-validate": "^3.4.9",
     "vuedraggable": "^2.24.3",
     "vuex-persistedstate": "^3.1.0"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.0.0",
+    "eslint-loader": "^4.0.2",
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.0.0"
   }
