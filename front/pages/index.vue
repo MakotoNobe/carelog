@@ -84,7 +84,7 @@
                     <template v-slot:default="{ item }">
                       <v-list-item :key="item.length">
                         <v-list-item-action>
-                        <v-checkbox></v-checkbox>
+                        <v-checkbox :id="item.city_number" :value="item.city_number" v-model="checkedcity"></v-checkbox>
                         </v-list-item-action>
                         <v-list-item-content>{{ item.name }}</v-list-item-content>
                         </v-list-item>
@@ -96,7 +96,7 @@
                <v-btn>
                       クリア
                     </v-btn>
-                    <v-btn>
+                    <v-btn @click="selectedcity">
                       検索する
                     </v-btn>
               </v-col>
@@ -165,16 +165,11 @@ export default {
       const selected = this.checkedcity;
       const areanumber = this.areanumber;
       const prefecturenum = this.prefecturenum;
-      console.log(citynum);
       let citynum = selected.map((selected) => {
-        // let rObj  = "&"
         let rObj = `cities[]=${selected}&`;
         return rObj;
       });
       const cityn = JSON.stringify(citynum);
-      console.log(cityn);
-      //   // デコードする方法
-      // var result = decodeURIComponent('%E3%81%82%E3%81%84%E3%81%86%3F%26ABC');
       this.$router.push({
         name: "offices",
         path: "/offices/:area/:prefecture/:city",
@@ -210,15 +205,13 @@ export default {
   background-color:white;
   .arearow{
     .col{
-      margin:10px;
+      margin:10px 20px;
+      padding:25px 15px;
       border: black 1px solid;
-      align-items: center;
-      justify-content: center;
+      text-align: center;
     }
   }
 }
-
-
 .current-content {
   color: #f06364;
 }
@@ -228,16 +221,6 @@ export default {
   margin-left: auto;
 }
 
-.v-list {
-  margin-left: 30px;
-  height: 350px;
-}
-
-.col {
-  display: flex;
-  margin-right: auto;
-  margin-left: auto;
-}
 
 .row {
   padding-top: 12px;
@@ -251,17 +234,10 @@ export default {
   button:nth-last-child(1) {
     background: #ff9966;
 }
+.col {
+  display: flex;
+  margin:0 auto;
 }
-
-
-
-
-
-.areacol {
-  margin: 1px;
-  border: black 1px solid;
-  align-items: center;
-  justify-content: center;
 }
 .area-text {
   padding-top: 16px;
@@ -280,7 +256,6 @@ export default {
       justify-content: center;
     }
   }
-
 }
 
 img {
