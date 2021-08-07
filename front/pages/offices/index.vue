@@ -15,7 +15,7 @@
         <h4 class="pt-2"> エリア 現在地周辺（）</h4>
         <v-btn  shaped class="btnsize location"><h3> 現在地から探す</h3></v-btn>
         <p>{{selectedArea.name}} > {{selectedPrefectures.name}}</p>
-        <!-- <v-checkbox v-model="selected" label="John" value="John"></v-checkbox> -->
+
         <v-virtual-scroll
         :bench="benched"
         :items="cities"
