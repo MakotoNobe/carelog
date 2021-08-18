@@ -165,18 +165,13 @@ export default {
       const selected = this.checkedcity;
       const areanumber = this.areanumber;
       const prefecturenum = this.prefecturenum;
-      let citynum = selected.map((selected) => {
-        let rObj = `cities[]=${selected}&`;
-        return rObj;
-      });
-      const cityn = JSON.stringify(citynum);
       this.$router.push({
         name: "offices",
         path: "/offices/:area/:prefecture/:city",
         query: {
           area: `${areanumber}`,
           prefecture: `${prefecturenum}`,
-          city: `${cityn}`,
+          city: `${selected}`,
         },
       });
     },

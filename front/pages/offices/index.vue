@@ -10,7 +10,8 @@
         class="pa-2"
         >
         <h3 class="pt-2">検索条件</h3>
-        <v-text-field  outlined placeholder="検索窓" class="pr-2 pt-2" rounded append-icon="mdi-magnify" @click:append="search"></v-text-field>
+        <v-text-field  outlined placeholder="検索窓" class="pr-2 pt-2" rounded append-icon="mdi-magnify"></v-text-field>
+        <!-- <v-text-field  outlined placeholder="検索窓" class="pr-2 pt-2" rounded append-icon="mdi-magnify" @click:append="getquery"></v-text-field> -->
         <hr width=220 size=3>
         <h4 class="pt-2"> エリア 現在地周辺（）</h4>
         <v-btn  shaped class="btnsize location"><h3> 現在地から探す</h3></v-btn>
@@ -43,14 +44,14 @@
         <v-row>
               <v-col cols="12" outlined>
               <h1>検索結果</h1>
-              <span>{{areaArrayindex}}件</span>
+              <span>{{officeindex}}件</span>
               </v-col>
         </v-row>
         <v-row>
-            <v-col cols="6" v-for="(area,index) in areas " :key="`area-${index}`" outlined>
+            <v-col cols="6" v-for="(officedata,index) in officedatas " :key="`officedata-${index}`" outlined>
              <v-col>
               <span>web予約可</span>
-              <h2>事業所名: {{ area.name }} <v-icon>mdi-heart-outline</v-icon></h2>
+              <h2>事業所名: {{officedata.name}} <v-icon>mdi-heart-outline</v-icon></h2>
              </v-col>
               <br>
               <v-row>
@@ -58,13 +59,13 @@
                 <v-img src="https://placehold.jp/120x120.png" height="150" width="200"></v-img>
                 </v-col>
                 <v-col>
-                <span><v-icon>mdi-account</v-icon>{{ area.id }}</span>
+                <span><v-icon>mdi-account</v-icon>{{ officedata.staff_number }}</span>
                 <br>
-                <span><v-icon>mdi-map-marker-radius-outline</v-icon>{{ area.created_at }}</span>
+                <span><v-icon>mdi-map-marker-radius-outline</v-icon>{{ officedata.address }}</span>
                 <br>
-                <span><v-icon>mdi-phone</v-icon>{{ area.created_at }}</span>
+                <span><v-icon>mdi-phone</v-icon>{{ officedata.tel }}</span>
                 <br>
-                <span><v-icon>mdi-account</v-icon>{{ area.id }}</span>
+                <span><v-icon>mdi-fax</v-icon>{{ officedata.fax }}</span>
                 </v-col>
               </v-row>
               <br>
@@ -122,27 +123,30 @@
       preid:[],
       selectedArea:[],
       selectedPrefectures:[],
-      areaArrayindex:[],
+      officeindex:[],
+      officedata:[],
     }
   },
     created() {
-       this.fristareacity();
+       this.gt();
     // ページが更新されたタイミングで関数を実行
      },
     methods: {
-      search(){
-        console.log("searchがクリックされたよ")
-      } ,
-    async fristareacity(){
-          const citiesapi = await this.$axios.$get('/api/v1/4/6/cities')
-          // '/api/v1//3←市区町村が変わる/cities'
-          this.areas = citiesapi.areas
-          this.prefectures = citiesapi.prefectures
-          this.cities = citiesapi.cities
-          this.selectedArea = this.areas.find((v) => v.id === this.prefectures[0].area_id);
-          this.selectedPrefectures = this.prefectures.find((v) => v.id === this.cities[0].prefecture_id);
-          this.areaArrayindex = this.areas.length
-    }
+      async gt(){
+        let cityquery = this.$route.query.city
+        let prefecturequery =  this.$route.query.prefecture
+        let areaquery = this.$route.query.area
+        let officeAPI = await this.$axios.$get(`/api/v1/offices?area=${areaquery}&prefecture=${prefecturequery}&cities[]=${cityquery}`)
+        this.officedatas = officeAPI.offices
+        this.officeindex = officeAPI.offices.length
+        // クエリから検索する市区町村を表示する
+        const citiesapi = await this.$axios.$get(`/api/v1/${areaquery}/${prefecturequery}/cities`)
+        this.areas = citiesapi.areas
+        this.prefectures = citiesapi.prefectures
+        this.cities = citiesapi.cities
+        this.selectedArea = this.areas.find((v) => v.id === this.prefectures[0].area_id);
+        this.selectedPrefectures = this.prefectures.find((v) => v.id === this.cities[0].prefecture_id);
+      },
     },
   }
 
