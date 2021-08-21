@@ -15,8 +15,7 @@
         <hr width=220 size=3>
         <h4 class="pt-2"> エリア 現在地周辺（）</h4>
         <v-btn  shaped class="btnsize location"><h3> 現在地から探す</h3></v-btn>
-        <p>{{selectedArea.name}} > {{selectedPrefectures.name}}</p>
-
+        <p>{{seleArea.name}} > {{selePre.name}}</p>
         <v-virtual-scroll
         :bench="benched"
         :items="cities"
@@ -24,7 +23,7 @@
         item-height="64"
       >
         <template v-slot:default="{ item }">
-          <v-list-item :key="item">
+          <v-list-item :key="item.id">
             <v-list-item-action>
              <!-- <v-checkbox
               v-model="checkbox"
@@ -48,7 +47,7 @@
               </v-col>
         </v-row>
         <v-row>
-            <v-col cols="6" v-for="(officedata,index) in officedatas " :key="`officedata-${index}`" outlined>
+          <v-col cols="6" v-for="officedata in officedatas " :key="officedata.id" outlined>
              <v-col>
               <span>web予約可</span>
               <h2>事業所名: {{officedata.name}} <v-icon>mdi-heart-outline</v-icon></h2>
@@ -115,37 +114,38 @@
 <script>
   export default {
     data() {
-    return {
-      benched: 0,
-      areas:[],
-      prefectures:[],
-      cities:[],
-      preid:[],
-      selectedArea:[],
-      selectedPrefectures:[],
-      officeindex:[],
-      officedata:[],
-    }
-  },
+      return {
+        benched: 0,
+        areas:[],
+        prefectures:[],
+        cities:[],
+        preid:[],
+        seleArea:[],
+        selePre:[],
+        officeindex:[],
+        officedatas:[],
+      }
+    },
     created() {
        this.gt();
     // ページが更新されたタイミングで関数を実行
      },
     methods: {
       async gt(){
-        let cityquery = this.$route.query.city
-        let prefecturequery =  this.$route.query.prefecture
-        let areaquery = this.$route.query.area
-        let officeAPI = await this.$axios.$get(`/api/v1/offices?area=${areaquery}&prefecture=${prefecturequery}&cities[]=${cityquery}`)
+        const cityquery = this.$route.query.city
+        const prefecturequery =  this.$route.query.prefecture
+        const areaquery = this.$route.query.area
+        const officeAPI = await this.$axios.$get(`/api/v1/offices?area=${areaquery}&prefecture=${prefecturequery}&cities[]=${cityquery}`)
         this.officedatas = officeAPI.offices
         this.officeindex = officeAPI.offices.length
         // クエリから検索する市区町村を表示する
-        const citiesapi = await this.$axios.$get(`/api/v1/${areaquery}/${prefecturequery}/cities`)
-        this.areas = citiesapi.areas
-        this.prefectures = citiesapi.prefectures
-        this.cities = citiesapi.cities
-        this.selectedArea = this.areas.find((v) => v.id === this.prefectures[0].area_id);
-        this.selectedPrefectures = this.prefectures.find((v) => v.id === this.cities[0].prefecture_id);
+        const citiesshow = await this.$axios.$get(`/api/v1/${areaquery}/${prefecturequery}/cities`)
+        const preshow = await this.$axios.$get(`/api/v1/${prefecturequery}/cities`)
+        this.areas = citiesshow.areas
+        this.prefectures = citiesshow.prefectures
+        this.cities = preshow.cities
+        this.seleArea = this.areas.find((v) => v.id === this.prefectures[0].area_id);
+        this.selePre = this.prefectures.find((v) => v.id === this.cities[0].prefecture_id);
       },
     },
   }

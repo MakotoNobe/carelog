@@ -129,11 +129,9 @@ export default {
   methods: {
     prechange(areid) {
       const preapi = this.$axios.$get(`/api/v1/${areid}/3/cities`);
-      console.log("preapiのコンソール" + preapi);
       const areanumber = areid;
       preapi
         .then((res) => {
-          console.log(res);
           return (
             (this.areas = res.areas),
             (this.prefectures = res.prefectures),
@@ -142,24 +140,22 @@ export default {
           );
         })
         .catch(() => {
-          console.log("Do that");
+          console.log("catch prechange中");
         });
     },
     citychange(preid){
-      const citiesapi = this.$axios.$get(`/api/v1/${preid}/cities`)
-      console.log('citiesapiのコンソール'+citiesapi)
-      const prefecturnum = preid
+      const citiesapi = this.$axios.$get(`/api/v1/${preid}/cities`);
+      const prefecturenum = preid;
       citiesapi
-      .then((res) => {
-        console.log(res);
-       return(
-      this.cities = res.cities,
-      this.prefecturenum = prefecturenum
-      )
-      })
-      .catch(() => {
-          console.log('Do that');
-      })
+        .then((res) => {
+          return (
+           (this.cities = res.cities),
+           (this.prefecturenum = prefecturenum)
+          );
+        })
+        .catch(() => {
+          console.log('catch citychangeの中');
+        });
       },
     selectedcity(checkedcity) {
       const selected = this.checkedcity;
